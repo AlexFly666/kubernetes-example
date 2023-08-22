@@ -19,7 +19,7 @@ jobs:
 #        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
       - name: Get short SHA
         id: get_sha
-        run: echo "SHA_SHORT=${{ github.sha:0:7 }}" >> $GITHUB_ENV
+        run: echo "SHA_SHORT=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
